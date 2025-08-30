@@ -37,8 +37,9 @@ RSpec/SpecFilePathFormat:
     - 'spec/bashly/concerns/completions_command_spec.rb'
     - 'spec/bashly/concerns/completions_flag_spec.rb'
 
-# Allow longer integration examples as they are more complex by nature
+# Allow longer examples in some cases
 RSpec/ExampleLength:
   Exclude:
     - 'spec/bashly/integration/**/*'
     - 'spec/bashly/libraries/render*'
+    - 'spec/bashly/script/command_spec.rb'

@@ -1,14 +1,41 @@
-# All settings are optional (with their default values provided below), and
-# can also be set with an environment variable with the same name, capitalized
-# and prefixed by `BASHLY_` - for example: BASHLY_SOURCE_DIR
+#-------------------------------------------------------------------------------
+# BASHLY SETTINGS
+#-------------------------------------------------------------------------------
 #
-# When setting environment variables, you can use:
-# - "0", "false" or "no" to represent false
-# - "1", "true" or "yes" to represent true
+### Default Values
 #
-# If you wish to change the path to this file, set the environment variable
-# BASHLY_SETTINGS_PATH.
-
+#   All settings are optional, with their default values provided below
+#
+### Environment Variables
+#
+#   Values can also be set using an environment variable with the same name,
+#   capitalized and prefixed by `BASHLY_` - for example: `BASHLY_SOURCE_DIR`
+#
+#   When setting environment variables, you can use:
+#   - "0", "false" or "no" to represent false
+#   - "1", "true" or "yes" to represent true
+#
+#   Environment variables take precedence over values in the config file.
+#
+### File Location:
+#
+#   Bashly looks for the settings file in these locations.
+#   - The path defined in the `BASHLY_SETTINGS_PATH` environment variable.
+#   - A file named `bashly-settings.yml` in the working directory.
+#   - A file named `settings.yml` in the working directory.
+#
+### Environment Overrides:
+#
+#   All options (except `env`) may be specified with an environment suffix in 
+#   order to override its value for a given environment.
+#
+#   For example, when defining `formatter_production: shfmt --minify`, then 
+#   this will be the formatter used when generating the script with
+#   `bashly generate --env production`
+#
+#   Since these values take precedence over the standard values, you can define
+#   both (i.e. `formatter: shfmt` and `formatter_production: shfmt --minify`).
+#
 
 #-------------------------------------------------------------------------------
 # PATH OPTIONS
@@ -52,12 +79,12 @@ strict: false
 tab_indent: false
 
 # Choose a post-processor for the generated script:
-# formatter: internal     # Use Bashly's internal formatter (compacts newlines)
+# formatter: internal     # Use Bashly’s built-in formatter (removes extra newlines)
 # formatter: external     # Run the external command `shfmt --case-indent --indent 2`
 # formatter: none         # Disable formatting entirely
-# formatter: <string>     # Use a custom shell command to format the script.
-#                         # The command will receive the script via stdin and
-#                         # must output the result to stdout.
+# formatter: <string>     # Provide a custom shell command to format the script.
+#                         # The command receives the script via stdin and must
+#                         # write the result to stdout.
 #                         # Example: shfmt --minify
 formatter: internal
 
@@ -102,7 +129,7 @@ usage_colors:
 #-------------------------------------------------------------------------------
 
 # Set to 'production' or 'development'.
-# Determines which features are enabled in the rendered script.
+# Determines which features are enabled in the generated script.
 # Use the `enable_*` options below to adjust settings for each environment.
 # It is recommended to leave this set to 'development' and run
 # `bashly generate --env production` when the production version is needed.

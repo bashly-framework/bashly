@@ -74,6 +74,27 @@ describe Settings do
         expect(subject.tab_indent).to eq ENV['BASHLY_TAB_INDENT']
       end
     end
+
+    context 'when using env suffix overrides' do
+      before do
+        reset_tmp_dir
+        File.write 'spec/tmp/settings.yml', 'formatter_production: shfmt --minify'
+        subject.formatter = nil
+      end
+
+      it 'returns the default value when it is not the specified environment' do
+        Dir.chdir 'spec/tmp' do
+          expect(subject.formatter).to eq 'internal'
+        end
+      end
+
+      it 'returns the config value when it is the specified environment' do
+        Dir.chdir 'spec/tmp' do
+          subject.env = :production
+          expect(subject.formatter).to eq 'shfmt --minify'
+        end
+      end
+    end
   end
 
   describe '::env' do
