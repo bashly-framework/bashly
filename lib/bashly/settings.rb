@@ -181,13 +181,12 @@ module Bashly
       end
 
       def user_settings_path
-        @user_settings_path ||= if ENV['BASHLY_SETTINGS_PATH']
-          ENV['BASHLY_SETTINGS_PATH']
-        elsif File.exist? 'bashly-settings.yml'
-          'bashly-settings.yml'
-        else
-          'settings.yml'
-        end
+        @user_settings_path ||= ENV['BASHLY_SETTINGS_PATH'] || [
+          '.bashly.yml', 'bashly.yml',
+          '.bashly-settings.yml', 'bashly-settings.yml',
+          '.bashlyrc.yml', 'bashlyrc.yml',
+          '.settings.yml'
+        ].find { |f| File.exist?(f) } || 'settings.yml'
       end
 
       def default_settings
