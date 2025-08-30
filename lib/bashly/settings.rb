@@ -182,7 +182,6 @@ module Bashly
 
       def user_settings_path
         @user_settings_path ||= ENV['BASHLY_SETTINGS_PATH'] || [
-          '.bashly.yml', 'bashly.yml',
           '.bashly-settings.yml', 'bashly-settings.yml',
           '.bashlyrc.yml', 'bashlyrc.yml',
           '.settings.yml'

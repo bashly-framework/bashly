@@ -90,34 +90,6 @@ describe Settings do
       end
     end
 
-    context 'when bashly.yml exists' do
-      before do
-        reset_tmp_dir
-        File.write 'spec/tmp/bashly.yml', 'source_dir: somedir'
-        subject.source_dir = nil
-      end
-
-      it 'returns the value from the settings file' do
-        Dir.chdir 'spec/tmp' do
-          expect(subject.source_dir).to eq 'somedir'
-        end
-      end
-    end
-
-    context 'when .bashly.yml exists' do
-      before do
-        reset_tmp_dir
-        File.write 'spec/tmp/.bashly.yml', 'source_dir: somedir'
-        subject.source_dir = nil
-      end
-
-      it 'returns the value from the settings file' do
-        Dir.chdir 'spec/tmp' do
-          expect(subject.source_dir).to eq 'somedir'
-        end
-      end
-    end
-
     context 'when BASHLY_SETTINGS_PATH is set' do
       before do
         reset_tmp_dir
