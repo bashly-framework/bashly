@@ -13,7 +13,7 @@ Create feature-rich bash scripts using simple YAML configuration
 
 </div>
 
-![repocard](repocard.svg)
+![repocard](https://repocard.dannyben.com/svg/bashly.svg)
 
 Bashly is a command line application (written in Ruby) that lets you
 generate feature-rich bash command line tools.
