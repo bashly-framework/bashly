@@ -27,8 +27,9 @@ describe 'generated bash scripts', :slow do
   # are too volatile (e.g. line number changes)
   let(:exceptions) do
     {
-      'examples/stacktrace'    => [/download:\d+/, 'download:<line>'],
-      'examples/render-mandoc' => [/Version 0.1.0.*download\(1\)/, '<footer>'],
+      'examples/stacktrace'       => [/download:\d+/, 'download:<line>'],
+      'examples/render-mandoc'    => [/Version 0.1.0.*download\(1\)/, '<footer>'],
+      'examples/dependencies-alt' => [%r[/home/(.+)/ruby], '/home/.../ruby']
     }
   end
 

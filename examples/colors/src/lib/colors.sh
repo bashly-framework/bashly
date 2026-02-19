@@ -42,6 +42,7 @@ white() { print_in_color "\e[37m" "$*"; }
 
 bold() { print_in_color "\e[1m" "$*"; }
 underlined() { print_in_color "\e[4m" "$*"; }
+bold_underlined() { print_in_color "\e[1;4m" "$*"; }
 
 red_bold() { print_in_color "\e[1;31m" "$*"; }
 green_bold() { print_in_color "\e[1;32m" "$*"; }
