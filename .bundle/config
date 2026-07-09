@@ -1,0 +1,4 @@
+---
+BUNDLE_BUILD__FFI: "--disable-system-libffi"
+BUNDLE_BUILD__NOKOGIRI: "--no-use-system-libraries"
+BUNDLE_FORCE_RUBY_PLATFORM: "false"

@@ -1,0 +1,16 @@
+FROM ghcr.io/tamatebako/tebako-alpine-3.17:latest as builder
+
+RUN apk add bash curl curl-dev ruby-dev build-base
+RUN apk add  ruby ruby-io-console ruby-irb \
+  ruby-json ruby-etc ruby-bigdecimal ruby-rdoc \
+  libffi-dev zlib-dev yaml-dev
+
+WORKDIR /wd
+COPY . /wd
+RUN tebako press -D --entry-point=bashly --root /wd -R 3.4.1
+
+FROM alpine:3.17
+
+COPY --from=builder /wd/bashly /usr/local/bin/bashly
+
+ENTRYPOINT ["/usr/local/bin/bashly"]

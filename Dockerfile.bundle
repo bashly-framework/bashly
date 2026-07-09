@@ -1,0 +1,25 @@
+FROM ghcr.io/tamatebako/tebako-ubuntu-20.04:latest as builder
+
+RUN apt-get update && apt-get install -y \
+    bash \
+    curl \
+    libcurl4-openssl-dev \
+    ruby-dev \
+    build-essential
+
+RUN apt-get install -y \
+    ruby \
+    ruby-rdoc \
+    libffi-dev \
+    zlib1g-dev \
+    libyaml-dev
+
+WORKDIR /wd
+COPY . /wd
+RUN tebako press -D --entry-point=bashly --root /wd -R 3.4.1
+
+FROM ubuntu:20.04
+
+COPY --from=builder /wd/bashly /usr/local/bin/bashly
+
+ENTRYPOINT ["/usr/local/bin/bashly"]
