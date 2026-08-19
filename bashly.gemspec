@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.executables = ['bashly']
   s.homepage    = 'https://github.com/bashly-framework/bashly'
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 3.2'
+  s.required_ruby_version = '>= 3.3'
 
   s.add_dependency 'colsole', '~> 1.0'
   s.add_dependency 'completely', '~> 0.8.0'
