@@ -152,7 +152,7 @@ describe Settings do
     it 'enables every supported shell when set to full' do
       subject.completions = 'full'
 
-      expect(subject.completion_shells).to eq %w[bash zsh]
+      expect(subject.completion_shells).to eq %w[bash fish zsh]
     end
 
     it 'accepts one shell' do
@@ -162,9 +162,9 @@ describe Settings do
     end
 
     it 'accepts comma-separated shells with optional whitespace' do
-      subject.completions = 'bash, zsh'
+      subject.completions = 'bash, fish, zsh'
 
-      expect(subject.completion_shells).to eq %w[bash zsh]
+      expect(subject.completion_shells).to eq %w[bash fish zsh]
     end
 
     it 'accepts the setting from the environment' do
@@ -178,7 +178,7 @@ describe Settings do
     end
 
     it 'rejects invalid values' do
-      invalid_values = [true, '', 'all', 'bash+zsh', 'fish', 'bash,', 'bash,,zsh', 'bash,bash']
+      invalid_values = [true, '', 'all', 'bash+zsh', 'ksh', 'bash,', 'bash,,zsh', 'bash,bash']
 
       invalid_values.each do |value|
         subject.completions = value

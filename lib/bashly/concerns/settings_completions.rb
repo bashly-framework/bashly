@@ -1,6 +1,6 @@
 module Bashly
   module SettingsCompletions
-    COMPLETION_SHELLS = %w[bash zsh].freeze
+    COMPLETION_SHELLS = %w[bash fish zsh].freeze
 
     def completions
       @completions ||= get :completions

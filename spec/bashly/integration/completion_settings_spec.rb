@@ -29,14 +29,25 @@ describe 'Completion settings', :slow do
     script = generate_with_completions 'bash'
 
     expect(script).to include 'send_completions_bash() {'
+    expect(script).not_to include 'send_completions_fish() {'
     expect(script).not_to include 'send_completions_zsh() {'
     expect(script).to include 'local completion_shell="${1:-bash}"'
+  end
+
+  it 'generates only the Fish adapter when Fish is selected' do
+    script = generate_with_completions 'fish'
+
+    expect(script).not_to include 'send_completions_bash() {'
+    expect(script).to include 'send_completions_fish() {'
+    expect(script).not_to include 'send_completions_zsh() {'
+    expect(script).to include 'local completion_shell="${1:-fish}"'
   end
 
   it 'generates only the Zsh adapter when Zsh is selected' do
     script = generate_with_completions 'zsh'
 
     expect(script).not_to include 'send_completions_bash() {'
+    expect(script).not_to include 'send_completions_fish() {'
     expect(script).to include 'send_completions_zsh() {'
     expect(script).to include 'local completion_shell="${1:-zsh}"'
   end
@@ -45,6 +56,7 @@ describe 'Completion settings', :slow do
     script = generate_with_completions 'full'
 
     expect(script).to include 'send_completions_bash() {'
+    expect(script).to include 'send_completions_fish() {'
     expect(script).to include 'send_completions_zsh() {'
   end
 end

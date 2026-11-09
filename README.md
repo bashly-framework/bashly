@@ -60,7 +60,7 @@ Bashly is responsible for:
   - **Color output**.
   - **Config file management** (INI format).
   - **YAML parsing**.
-  - **Bash completions**.
+  - **Shell completions** (bash, fish and zsh).
   - *and more*.
 - Auto-generating **markdown and man page documentation** for your script.
 
