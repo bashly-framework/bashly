@@ -48,15 +48,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-    # Rush needed for easy installation of check-jsonschema
+    # Rush needed for easy installation of jsonschema
     - name: Install rush
       run: curl -Ls http://get.dannyb.co/rush/setup | bash
 
     - name: Connect rush repo
       run: rush clone dannyben --shallow --default
 
-    - name: Install check-jsonschema
-      run: rush get check-jsonschema
+    - name: Install jsonschema
+      run: rush get jsonschema
 
     # libyaml needed for Ruby's YAML library
     - name: Install OS dependencies
