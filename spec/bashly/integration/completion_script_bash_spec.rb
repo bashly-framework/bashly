@@ -57,12 +57,12 @@ describe 'Bash completion script', :slow do
 
     it 'rejects unsupported shells' do
       stdout, stderr, status = Open3.capture3(
-        'bash', '-c', "source #{cli}; send_completions fish"
+        'bash', '-c', "source #{cli}; send_completions ksh"
       )
 
       expect(status).not_to be_success
       expect(stdout).to be_empty
-      expect(stderr).to eq "unsupported shell: fish\n"
+      expect(stderr).to eq "unsupported shell: ksh\n"
     end
   end
 

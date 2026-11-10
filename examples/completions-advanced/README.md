@@ -15,6 +15,11 @@ source <(cli completions)
 source <(cli completions zsh)
 ```
 
+```fish
+# Fish
+cli completions fish | source
+```
+
 <!-- include: settings.yml src/completions_command.sh src/lib/completions.sh -->
 
 -----
@@ -32,7 +37,7 @@ commands:
   args:
   - name: shell
     help: Shell to generate completions for
-    allowed: [bash, zsh]
+    allowed: [bash, fish, zsh]
     default: bash
 
 - name: deploy

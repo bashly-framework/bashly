@@ -8,7 +8,7 @@ commands:
   args:
   - name: shell
     help: Shell to generate completions for
-    allowed: [bash, zsh]
+    allowed: [bash, fish, zsh]
     default: bash
 
 - name: download

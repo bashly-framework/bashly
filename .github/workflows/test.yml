@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
     - name: Install OS dependencies
-      run: sudo apt-get -y install mandoc zsh
+      run: sudo apt-get -y install mandoc zsh fish
 
     # Rush needed for easy installation of stuff
     - name: Install rush

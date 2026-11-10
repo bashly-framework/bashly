@@ -13,6 +13,11 @@ source <(cli completions)
 source <(cli completions zsh)
 ```
 
+```fish
+# Fish
+cli completions fish | source
+```
+
 This example was generated with:
 
 ```bash
@@ -41,7 +46,7 @@ commands:
   args:
   - name: shell
     help: Shell to generate completions for
-    allowed: [bash, zsh]
+    allowed: [bash, fish, zsh]
     default: bash
 
 - name: download
