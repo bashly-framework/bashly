@@ -37,7 +37,7 @@ describe 'Fish completion script', :slow do
       expect(status).to be_success
       expect(stderr).to be_empty
       expect(stdout).to start_with "function _cli_completions\n"
-      expect(stdout).to end_with %(complete --command cli --no-files --arguments "(_cli_completions)"\n)
+      expect(stdout).to end_with %[complete --command cli --no-files --arguments "(_cli_completions)"\n]
     end
 
     it 'completes commands' do

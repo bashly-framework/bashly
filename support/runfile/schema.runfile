@@ -116,17 +116,18 @@ helpers do
     say "\ngub`Invalid files PASS`"
   end
 
+  # JSON Schema CLI: https://github.com/sourcemeta/jsonschema
   def schema_check(file, schema = 'bashly')
-    command = "check-jsonschema --schemafile schemas/#{schema}.json #{file}"
-    say "\nnb`$ check-jsonschema` [m`#{schema}`] bb`#{file}`"
+    command = "jsonschema validate schemas/#{schema}.json #{file}"
+    say "\nnb`$ jsonschema validate` [m`#{schema}`] bb`#{file}`"
     success = system command
     
     abort 'Failed' unless success
   end
   
   def schema_anticheck(file, schema = 'bashly')
-    command = "check-jsonschema --schemafile schemas/#{schema}.json #{file}"
-    say "\nnb`$ check-jsonschema` [m`#{schema}`] bb`#{file}`"
+    command = "jsonschema validate schemas/#{schema}.json #{file}"
+    say "\nnb`$ jsonschema validate` [m`#{schema}`] bb`#{file}`"
     success = system "#{command}"
     
     abort 'Failed' if success
